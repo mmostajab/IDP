@@ -1,0 +1,84 @@
+@PHDTHESIS{Schirski:50085,
+      author       = {Schirski, Marc},
+      othercontributors = {Bischof, Christian},
+      title        = {{I}nteractive particle tracing for the exploration of flow
+                      fields in virtual environments},
+      address      = {Aachen},
+      publisher    = {Publikationsserver der RWTH Aachen University},
+      pages        = {X, 139 S. : Ill., graph. Darst.},
+      year         = {2008},
+      note         = {Zusammenfassung in engl. und dt. Sprache; Aachen, Techn.
+                      Hochsch., Diss., 2008},
+      abstract     = {Due to rising data sizes and growing complexity, the
+                      results of modern numerical simulations are increasingly
+                      difficult to understand. Thus, scientific visualization is
+                      vital for an in-depth comprehension of computational fluid
+                      dynamics data. Especially the use of Virtual Reality
+                      methodology for an interactive exploration is gaining more
+                      and more importance, as it significantly facilitates the
+                      analysis of complex, three- to four-dimensional flow
+                      phenomena. However, large data sizes and high computational
+                      complexity limit a straightforward application of flow
+                      visualization methodology for real-world datasets due to
+                      violations of vital real-time constraints. This thesis aims
+                      at providing means for an intuitive exploration of complex
+                      flow phenomena in immersive virtual environments –
+                      including large, unsteady datasets, which tend to frequently
+                      exceed the memory capabilities of modern workstations. Due
+                      to its high expressiveness, the main focus of this work lies
+                      on interactive particle tracing. By exploiting the
+                      respective capabilities of the individual components of
+                      today's heterogeneous visualization environments, a level of
+                      interactivity is achieved which lies beyond that of
+                      contemporary approaches. The theoretical foundation of this
+                      work consists of novel models for the interactive
+                      exploration process and contemporary visualization
+                      infrastructure, as well as an extension of the classical
+                      visualization pipeline. Based on an execution frequency
+                      analysis, computational tasks are distributed onto the
+                      components of a heterogeneous visualization environment
+                      comprising high performance computing (HPC) infrastructure
+                      and dedicated rendering workstations equipped with modern
+                      graphics processing units (GPUs). For interactive particle
+                      tracing, this results in HPC-based data reduction, followed
+                      by GPU-based computation and depiction of particle
+                      trajectories, thus performing a paradigm shift regarding the
+                      utilization of HPC infrastructure for interactive data
+                      analysis. The building blocks of such a system include an
+                      efficient method for demand-driven data reduction – in
+                      this case by resampling a given unstructured grid into a
+                      Cartesian grid. An efficient cell search method and
+                      multi-level parallelization allow for an excellent
+                      utilization of available HPC resources. In order to assess
+                      the approximation quality of the resampled flow field, error
+                      estimation and feedback are discussed as well. Full
+                      interactivity for the actual exploration is achieved by
+                      performing particle tracing on the visualization front-end
+                      using the GPU. While support for flow fields given on
+                      Cartesian grids is relatively straightforward, this thesis
+                      presents a method for storing flow data in the form of
+                      tetrahedral grids within graphics memory, thus maintaining
+                      an optimized domain discretization as used in the flow
+                      simulation phase. Handling time-dependent flow fields on
+                      Cartesian and static tetrahedral grids adds to the
+                      flexibility of the presented approaches. For an efficient
+                      depiction of particle information, this work introduces
+                      image-based rendering techniques for both instantaneous
+                      particles and particle traces. An emphasis is put on their
+                      applicability in immersive virtual environments. The
+                      presented methods have been integrated into the
+                      visualization framework ViSTA FlowLib. These implementations
+                      have been used for a thorough evaluation via performance
+                      measurements and an assessment of usability, applicability
+                      and expressiveness for an interactive exploration of various
+                      real-world datasets with different characteristics.},
+      keywords     = {Dreidimensionale Computergraphik (SWD) / Visualisierung
+                      (SWD) / Virtuelle Realität (SWD)},
+      cin          = {124170 / 120000},
+      ddc          = {Informatik},
+      cid          = {$I:(DE-82)124170_20140620$ / $I:(DE-82)120000_20140620$},
+      shelfmark    = {I.6.6 * I.3.3 * I.3.7},
+      typ          = {PUB:(DE-HGF)11},
+      urn          = {urn:nbn:de:hbz:82-opus-23901},
+      url          = {http://publications.rwth-aachen.de/record/50085},
+}

@@ -1,0 +1,26 @@
+\chapter{\abstractname}
+
+Streamsurfaces are one of the powerful visualization tools, which are used to gain insight into characteristics and features of flow fields. In practice, streamsurfaces are approximated by triangulating adjacent pairs of integral curves, originating from a seeding line. The generation of integral curves bears quite some similarities to ray tracing algorithms used in physically based renderers. Although, the techniques used in ray tracing may not have good performance in the streamline computation context due to their different computational nature, they can be optimized for streamline computation by introducing some modifications.
+
+In this master thesis, I present my work on accurate streamsurface computation and rendering in real-time, by exploiting the scalability and portability features of parallel architectures in heterogeneous computing, and utilizing concepts from physically based rendering. To improve the efficiency, I use a scheduler to divide the streamsurface computation and rendering tasks on different devices proportional to their computation powers. Additionally, I apply acceleration structures and the concepts of caching to improve the efficiency and utilization of streamsurface generation on modern GPUs and CPUs to achieve real-time results. Furthermore, the possible impact of applying ray-packing and ray-sorting to the streamline computation is investigated.
+
+%In this paper, acceleration structures used in raytracing are applied to cell locating in streamline computation context.
+%Furthermore, the concept of mailboxing, ray-packing, and ray-sorting are utilized for exploiting the effciency and power of the modern GPUs and
+%CPUs. 
+
+%Our framework features a static task scheduler 
+%(which corrects itself in different steps) 
+%to divide the streamsurface computation and tasks on different devices proportional to the device's computation power.\\
+%In this framework, an adaptive Runge-Kutta integration method,
+%in-cell interpolation, and early termination elimination techniques are uti-
+%lized for catching accurate streamline integration. Additionally, there are
+%circumstances where the streamlines curves diverge too far and the surface
+%approximation accuracy drops. To increase it, especially for long integra-
+%tion times, new particles must be placed on the initial seeding curve for
+%refinement. 
+%Additionally, 
+
+
+%This motivates using physically based rendering techniques in streamline computation, . 
+
+
