@@ -1,0 +1,69 @@
+\chapter{Project Description}
+\section{Objective}
+
+UHF-RFID systems demands a reliable transponder detection. A reliable RFID detection system can activate all the RFIDs in a specific range from the gate's center. To activate an RFID, an electromagnetic field strength is required in transponder position. It is the UHF-RFID antennas installation that determines the electromagnetic field strength distribution in the area around the gate. The main goal of this project is to detect the areas in the gate which the magnetic field strength is not in a specific acceptable domain. Therefore, the user is able to change the antenna installation to make the transponder detection more reliable.
+
+The main contributions of this IDP project was to first use specific interaction method using tracking system to define the virtual world corresponding to the real world. As the later contribution, I have implemented a method to inform the user about the quality of measurements in parts of the area of interest. Finally, appropriate visualization methods (sphere/torus glyph visualization, and direct volume rendering) are utilized to show the measured values in appropriate way to the user.
+
+\section{Sphere/Torus Glyph}
+
+\section{Direct Volume Rendering (DVR)}
+
+Direct volume rendering performs ray cast in the grid of collected data from the
+bounding box's entry point towards the exit point with steps of a fixed size. At each step, sample the
+3D texture and compare the result with the high/weak electromagnetic field strength. Stop when the ray reaches the exit point. Durig the ray casting, the ray will step iteratively through the volume with a fixed step-size, starting at the entry point, and in every step do the following:
+
+\begin{itemize}
+	\item Sample the volume scalar value .
+	\item Apply the electromagnetic field strength mapping to get an RGBA value.
+	\item Adjust the alpha value to the step-size by multiplying it with $h$ (and maybe an additional constant scaling value). This makes the overall opacity in the final image independent of $h$.
+	\item Update the current accumulated RGBA value using the rule for front-to-back alpha blending.
+	\item Terminate if you reach the exit point or if accumulated gets close to 1 (= early ray termination: everything behind won’t have an effect on the final color), and return the accumulated value.
+\end{itemize}
+
+\begin{lstlisting}[caption={\textbf{Direct Volume Rendering (DVR)} fragment shader}.  , label=dvr_fragment_shader]
+void main() {
+
+  vec3 pos = localPos.xyz ;
+  vec3 org = camera_pos;
+  vec3 dir = normalize(pos - org);
+
+  vec3 t_min = (min_corner - org) / dir;
+  vec3 t_max = (max_corner - org) / dir;
+
+  vec3 tmp0 = min(t_min, t_max);
+  vec3 tmp1 = max(t_min, t_max);
+
+  t_min = tmp0;
+  t_max = tmp1;
+
+  float t_entryPoint = max(t_min.x, max(t_min.y, t_min.z));
+  float t_exitPoint  = min(t_max.x, min(t_max.y, t_max.z));
+
+  vec3  texCoords;
+  float t = t_entryPoint;
+  float t_prev = t;
+
+  float alpha = 0;
+  vec3 color = vec3(0.0f);
+  while(t < t_exitPoint)
+  {
+    texCoords = ((org + t * dir) - min_corner) / (max_corner - min_corner);
+    float s = texture(tex, texCoords).r;
+
+    if(inRange(s, WeakThreshold, StrengthThreshold)){
+
+      float alphaF = getAlpha(s);
+      vec3  colorF = getColormap(s);
+      alpha = alpha + (1 - alpha) * alphaF;
+      color = color + (1 - alpha) * colorF;
+      if(abs(alpha - 1) < 0.001f)
+      break;
+    }
+
+    t += stepsize;
+  }
+
+  outColor = vec4(color, alpha);
+}
+\end{lstlisting}
